@@ -37,6 +37,11 @@ namespace img_lib {
         // открываем поток с флагом ios::binary
         // поскольку будем читать данные в двоичном формате
         ifstream ifs(file, ios::binary);
+
+        if (!ifs) {
+            return Image();
+        }
+
         std::string sign;
         int w, h, color_max;
 

@@ -87,6 +87,16 @@ namespace img_lib {
 
         int w, h, data_size;
 
+        char sign1;
+        char sign2;
+
+        ifs.read(&sign1, 1);
+        ifs.read(&sign2, 1);
+
+        if (sign1 != 'B' || sign2 != 'M') {
+            return Image();
+        }
+
         ifs.seekg(18);
         ifs.read(reinterpret_cast<char*>(&w), sizeof(w));
         ifs.read(reinterpret_cast<char*>(&h), sizeof(h));
